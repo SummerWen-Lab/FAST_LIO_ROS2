@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  fast_lio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: fast_lio_ros2
+    container_name: fast_lio_container
+    user: SummerWen
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - ..:/workspace:cached
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev/bus/usb:/dev/bus/usb
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    network_mode: host
+    ipc: host
+    privileged: true
+    tty: true
+    stdin_open: true

@@ -1,0 +1,31 @@
+{
+    "name": "FAST_LIO ROS2",
+    "dockerFile": "Dockerfile",
+    "remoteUser": "vscode",
+    
+    // 设置容器工作区
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+    "workspaceFolder": "/workspace",
+    
+    // 容器运行时参数
+    "runArgs": [
+        "--net=host",
+        "--privileged",
+        "--ipc=host",
+        "--device=/dev/ttyUSB0",
+        "-v /dev/bus/usb:/dev/bus/usb",
+        "-e DISPLAY=${env:DISPLAY}",
+        "-v /tmp/.X11-unix:/tmp/.X11-unix"
+    ],
+    
+    // 推荐的 VSCode 扩展
+    "extensions": [
+        "ms-vscode.cpptools",
+        "ms-iot.vscode-ros",
+        "twxs.cmake",
+        "eamodio.gitlens"
+    ],
+    
+    // 容器创建后执行的命令
+    "postCreateCommand": "bash .devcontainer/setup.sh"
+}
