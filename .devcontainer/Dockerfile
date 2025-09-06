@@ -1,5 +1,6 @@
 # 使用官方 ROS2 Humble 镜像
-FROM osrf/ros:humble-desktop-full
+# FROM osrf/ros:humble-desktop-full\
+FROM summerwen612/fast_lio_wxm:250906-stable
 
 # 安装基本工具和依赖
 RUN apt-get update && apt-get install -y \
